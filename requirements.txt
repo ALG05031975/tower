@@ -1,0 +1,1 @@
+streamlitopencv-pythonnumpypandas# Add any other libraries your app needs
