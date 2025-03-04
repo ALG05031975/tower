@@ -1,0 +1,23 @@
+# Use an official Python runtime as a parent image
+FROM python:3.9
+
+# Set the working directory
+WORKDIR /app
+
+# Copy application files
+COPY Product.py /app/
+COPY requirements.txt /app/
+
+# Create the weights directory and copy the weight file
+RUN mkdir -p /app/weights
+COPY best08.pt /app/weights/best08.pt
+
+# Upgrade pip and install dependencies without cache or hash checking
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir --upgrade --no-deps --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org -r requirements.txt
+
+# Expose the FastAPI port
+EXPOSE 8001
+
+# Run the application
+CMD ["uvicorn", "Product:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]

@@ -1,0 +1,15 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+
+# Ignore Streamlit & system files
+.streamlit/
+.DS_Store
+
+# Ignore log files and large datasets (if applicable)
+logs/
+*.log
+data/
